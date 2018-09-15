@@ -7,3 +7,17 @@ console.log(buffering.toString());
 
 buffering.write("Me");
 console.log(buffering.toString());
+
+//Node cannot deal with binary data and buffer helps to do the same..
+
+// But in ES6 it can be dealt using Typed Arrays
+
+// ===> ES6 TYPED ARRAYS
+
+var buffer = new ArrayBuffer(8); //Size in bytes = 64 bits 0s & 1s
+
+var view = new Int32Array(buffer);
+
+view[0] = 12;
+view[1] = 45;
+console.log(view);
