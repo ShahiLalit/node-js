@@ -43,3 +43,11 @@ console.log("Runs Before greetAsync because asynchronous code.");
 */
 
 // There is a problem with this approach that the code is using buffer to store the data and if more people are using the application at a time it can cause more memory to be used and can effect the performance of the application.
+
+//This can be solved with the help of streams and dealing with the data in chunks: dividing the data into smaller pieces called chunks.
+
+// Prevents to use more buffer memory at a time and helps in performance
+
+// Pipe is another method in node js which can help process the data faster.
+
+// Pipe can read from a readable stream depending upon the buffer size and send that chunk of data to another pipe(writable stream).
