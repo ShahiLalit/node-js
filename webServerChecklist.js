@@ -23,8 +23,22 @@ var webServerChecklist = {
 */
 
 /*
+ ==> 4: "The ability to communicate over the internet",
+
+      TCP/IP
+
+*/
+
+/*
+ ==> 5: "The ability to accept requests and send responses in the standard format",
+
+      Web Server
+*/
+
+/*
  ==> 6: "A way to deal with work tha takes a long time",
 
       Synchronously and Asynchronously 
+      Streams
 
 */
