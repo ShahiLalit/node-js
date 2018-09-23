@@ -1,22 +1,33 @@
-// var Emitter = require("./emitter"); // Custom Event Emitter
-var Emitter = require("events"); // Node js Internal Event Emitter
-var eventConfig = require("./config").events;
+var express = require("express");
+var app = express();
 
-var emit = new Emitter();
+var port = process.env.PORT || 3000;
 
-emit.on(eventConfig.GREET, function() {
-  console.log("Hey! someone said Hello");
+app.use("/assets", express.static(__dirname + "/public"));
+
+app.use("/", function(req, res, next) {
+  console.log("Request Url:" + req.url);
+  next();
 });
 
-emit.on(eventConfig.GREET, function() {
-  console.log("An event Occurred");
+app.get("/", function(req, res) {
+  res.send(
+    "<html><head><link href=assets/style.css type=text/css rel=stylesheet /></head><body><h1>Hello world!</h1></body></html>",
+  );
 });
 
-emit.on(eventConfig.MORINING, function() {
-  console.log("Good Morning!");
+app.get("/person/:id", function(req, res) {
+  res.send(
+    "<html><head></head><body><h1>Person: " +
+      req.params.id +
+      "</h1></body></html>",
+  );
 });
 
-console.log("Hello!!");
+app.get("/api", function(req, res) {
+  res.json({firstname: "John", lastname: "Carter"});
+});
 
-emit.emit(eventConfig.GREET);
-emit.emit(eventConfig.MORINING);
+app.listen(port, () => {
+  console.log(`Server started at port: ${port}...`);
+});
